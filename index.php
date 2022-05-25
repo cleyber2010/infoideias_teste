@@ -8,3 +8,5 @@ $function = new Funcoes();
 
 echo $function->seculoAno(2201);
 
+echo $function->PrimoAnterior(100);
+

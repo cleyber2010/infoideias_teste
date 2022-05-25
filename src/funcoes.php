@@ -45,11 +45,30 @@ class Funcoes
     Número = 29 resposta = 23
 
      * */
-    public function PrimoAnterior(int $numero): int {
+    public function PrimoAnterior(int $numero) {
+        $numero -= 1;
         
+        for ($i = $numero; $i >= 2; $i--) {
+            if ($this->TestaPrimo($i)) {
+                $numero = $i;
+                break;
+            }
+        }
+
+        return $numero;
     }
 
+    private function TestaPrimo($numero): bool
+    {
+        for ($i = 2; $i < $numero; $i++) {
+            if ($numero % $i == 0) {
+                return false;
+                break;
+            }
+        }
 
+        return true;
+    }
 
 
 
