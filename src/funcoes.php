@@ -15,7 +15,16 @@ class Funcoes
 
      * */
     public function SeculoAno(int $ano): int {
+        $data = "{$ano}/01/01";
+        $ano = date("y", strtotime($data));
+
+        if ($ano == "00") {
+            $seculo = strftime("%C", strtotime($data));
+        } else {
+            $seculo = strftime("%C", strtotime($data)) + 1;
+        }
         
+        return $seculo;
     }
 
     
