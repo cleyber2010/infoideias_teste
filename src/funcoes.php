@@ -26,14 +26,6 @@ class Funcoes
         
         return $seculo;
     }
-
-    
-	
-	
-	
-	
-	
-	
 	
 	/*
 
@@ -45,7 +37,7 @@ class Funcoes
     Número = 29 resposta = 23
 
      * */
-    public function PrimoAnterior(int $numero) {
+    public function PrimoAnterior(int $numero): int {
         $numero -= 1;
         
         for ($i = $numero; $i >= 2; $i--) {
@@ -70,13 +62,6 @@ class Funcoes
         return true;
     }
 
-
-
-
-
-
-
-
     /*
 
     Desenvolva uma função que receba como parâmetro um array multidimensional de números inteiros e retorne como resposta o segundo maior número.
@@ -94,15 +79,19 @@ class Funcoes
 
      * */
     public function SegundoMaior(array $arr): int {
+        $array = [];
         
+        foreach ($arr as $arrs)
+        {
+            foreach ($arrs as $item) {
+                $array[] = $item;
+            }
+        }
+
+        unset($array[array_search(max($array), $array)]);
+
+        return max($array);
     }
-	
-	
-	
-	
-	
-	
-	
 
     /*
    Desenvolva uma função que receba como parâmetro um array de números inteiros e responda com TRUE or FALSE se é possível obter uma sequencia crescente removendo apenas um elemento do array.
@@ -134,7 +123,38 @@ class Funcoes
 
      * */
     
-	public function SequenciaCrescente(array $arr): boolean {
-        
+	public function SequenciaCrescente(array $arr): bool 
+    {
+        $j = 1;
+        $count = count($arr);
+
+        for ($i = 0; $i < $count; $i++) {
+            
+            if ($j < $count) {
+                if ($arr[$i] >= $arr[$j]) {
+                    unset($arr[$i]);
+                    break;
+                }
+            }    
+            $j++;
+        }
+
+        $array = array_values($arr);   
+        $j = 1;
+        $count = count($array);
+
+        for ($i = 0; $i < $count; $i++) {
+            
+            if ($j < $count) {
+                if ($array[$i] >= $array[$j]) {
+                    return false;
+                    break;
+                }
+            }
+
+            $j++;
+        }
+
+        return true;
     }
 }
